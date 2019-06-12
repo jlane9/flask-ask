@@ -9,7 +9,7 @@ from setuptools import setup
 def parse_requirements(filename):
     """ load requirements from a pip requirements file """
     lineiter = (line.strip() for line in open(filename))
-    return [line for line in lineiter if line and not line.startswith("#")]
+    return [line for line in lineiter if line and not line.startswith("#") or line.startswith("-")]
 
 setup(
     name='Flask-Ask',
@@ -25,10 +25,7 @@ setup(
     include_package_data=True,
     platforms='any',
     install_requires=parse_requirements('requirements.txt'),
-    test_requires=[
-        'mock',
-        'requests'
-    ],
+    test_requires=parse_requirements('requirements-dev.txt'),
     test_suite='tests',
     classifiers=[
         'License :: OSI Approved :: Apache Software License',
