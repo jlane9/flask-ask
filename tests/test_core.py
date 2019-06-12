@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
-from aniso8601.timezone import UTCOffset, build_utcoffset
+from aniso8601.timezone import build_utcoffset
 from flask_ask.core import Ask
 
 from datetime import datetime, timedelta

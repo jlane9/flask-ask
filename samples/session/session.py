@@ -1,8 +1,8 @@
 import logging
 import os
 
-from flask import Flask, json, render_template
-from flask_ask import Ask, request, session, question, statement
+from flask import Flask, render_template
+from flask_ask import Ask, session, question, statement
 
 
 app = Flask(__name__)

@@ -5,7 +5,7 @@ from six.moves.urllib.request import urlopen
 
 
 from flask import Flask
-from flask_ask import Ask, request, session, question, statement
+from flask_ask import Ask, session, question, statement
 
 
 app = Flask(__name__)

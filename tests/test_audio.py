@@ -1,6 +1,5 @@
 import unittest
 from mock import patch, MagicMock
-from flask import Flask
 from flask_ask import Ask, audio
 from flask_ask.models import _Field
 

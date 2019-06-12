@@ -1,6 +1,5 @@
 import unittest
 import json
-import uuid
 
 from flask_ask import Ask, statement
 from flask import Flask
