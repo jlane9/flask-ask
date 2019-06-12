@@ -14,8 +14,7 @@ logging.getLogger('flask_ask').setLevel(logging.DEBUG)
 PRODUCT_KEY = "PRODUCT"
 
 
-
-@ask.on_purchase_completed( mapping={'payload': 'payload','name':'name','status':'status','token':'token'})
+@ask.on_purchase_completed(mapping={'payload': 'payload', 'name': 'name', 'status': 'status', 'token': 'token'})
 def completed(payload, name, status, token):
     products = Product(context.System.apiAccessToken)
     logger.info('on-purchase-completed {}'.format( request))
@@ -29,6 +28,7 @@ def completed(payload, name, status, token):
         return question('To listen it just say - play {} '.format(product_name))
     else:      
         return question('Do you want to buy another product?')
+
 
 @ask.launch
 def launch():
@@ -51,7 +51,7 @@ def buy_intent(product_name):
         raise NotImplementedError()
     return buy(productId).simple_card('Welcome', question_text)
 
-    #return upsell(product,'get this great product')
+    # return upsell(product,'get this great product')
 
 
 @ask.intent('RefundSkillItemIntent', mapping={'product_name': 'ProductName'})

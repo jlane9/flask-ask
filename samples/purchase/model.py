@@ -1,5 +1,5 @@
 import requests
-from flask import  json
+from flask import json
 from flask_ask import logger
 
 class Product():
@@ -23,7 +23,6 @@ class Product():
         self.token = apiAccessToken
         self.product_list = self.query()
 
-
     def query(self):
         # Information required to invoke the API is available in the session
         apiEndpoint = "https://api.amazonalexa.com"
@@ -37,7 +36,7 @@ class Product():
                 "Accept-Language"   : language,
                 "Authorization"     : token
             }
-        #Call the API
+        # Call the API
         res = requests.get(url, headers=headers)
         logger.info('PRODUCTS:' + '*' * 80)
         logger.info(res.status_code)
@@ -63,7 +62,6 @@ class Product():
     def entitled(self, product):
         """ return True if entitled product"""
         return 'ENTITLED' == product['entitled']
-        
 
     def productId(self, name):
         print(self.product_list)

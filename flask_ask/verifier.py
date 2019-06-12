@@ -62,8 +62,8 @@ def _valid_certificate(cert):
         short_name = extension.get_short_name().decode('utf-8')
         value = str(extension)
         if 'subjectAltName' == short_name and 'DNS:echo-api.amazon.com' == value:
-                found = True
-                break
+            found = True
+            break
     if not found:
         return False
     return True

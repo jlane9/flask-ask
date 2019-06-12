@@ -254,6 +254,7 @@ class upsell(_Response):
             }]
         }
 
+
 class delegate(_Response):
 
     def __init__(self, updated_intent=None):
@@ -287,6 +288,7 @@ class elicit_slot(_Response):
         if updated_intent:
             self._response['directives'][0]['updatedIntent'] = updated_intent
 
+
 class confirm_slot(_Response):
     """
     Sends a ConfirmSlot directive.
@@ -307,6 +309,7 @@ class confirm_slot(_Response):
 
         if updated_intent:
             self._response['directives'][0]['updatedIntent'] = updated_intent
+
 
 class confirm_intent(_Response):
     """

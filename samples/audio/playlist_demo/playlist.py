@@ -235,6 +235,7 @@ def resume():
 def session_ended():
     return "{}", 200
 
+
 def dump_stream_info():
     status = {
         'Current Stream Status': current_stream.__dict__,
