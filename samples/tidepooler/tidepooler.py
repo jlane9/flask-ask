@@ -33,23 +33,23 @@ STATION_CODE_TAMPA = "8726667"
 STATION_CODE_NEW_ORLEANS = "8761927"
 STATION_CODE_GALVESTON = "8771341"
 
-STATIONS = {}
-STATIONS["seattle"] =  STATION_CODE_SEATTLE
-STATIONS["san francisco"] =  STATION_CODE_SAN_FRANCISCO
-STATIONS["monterey"] =  STATION_CODE_MONTEREY
-STATIONS["los angeles"] =  STATION_CODE_LOS_ANGELES
-STATIONS["san diego"] =  STATION_CODE_SAN_DIEGO
-STATIONS["boston"] =  STATION_CODE_BOSTON
-STATIONS["new york"] =  STATION_CODE_NEW_YORK
-STATIONS["virginia beach"] =  STATION_CODE_VIRGINIA_BEACH
-STATIONS["wilmington"] =  STATION_CODE_WILMINGTON
-STATIONS["charleston"] =  STATION_CODE_CHARLESTON
-STATIONS["beaufort"] =  STATION_CODE_BEAUFORT
-STATIONS["myrtle beach"] =  STATION_CODE_MYRTLE_BEACH
-STATIONS["miami"] =  STATION_CODE_MIAMI
-STATIONS["tampa"] =  STATION_CODE_TAMPA
-STATIONS["new orleans"] =  STATION_CODE_NEW_ORLEANS
-STATIONS["galveston"] =  STATION_CODE_GALVESTON
+STATIONS = dict()
+STATIONS["seattle"] = STATION_CODE_SEATTLE
+STATIONS["san francisco"] = STATION_CODE_SAN_FRANCISCO
+STATIONS["monterey"] = STATION_CODE_MONTEREY
+STATIONS["los angeles"] = STATION_CODE_LOS_ANGELES
+STATIONS["san diego"] = STATION_CODE_SAN_DIEGO
+STATIONS["boston"] = STATION_CODE_BOSTON
+STATIONS["new york"] = STATION_CODE_NEW_YORK
+STATIONS["virginia beach"] = STATION_CODE_VIRGINIA_BEACH
+STATIONS["wilmington"] = STATION_CODE_WILMINGTON
+STATIONS["charleston"] = STATION_CODE_CHARLESTON
+STATIONS["beaufort"] = STATION_CODE_BEAUFORT
+STATIONS["myrtle beach"] = STATION_CODE_MYRTLE_BEACH
+STATIONS["miami"] = STATION_CODE_MIAMI
+STATIONS["tampa"] = STATION_CODE_TAMPA
+STATIONS["new orleans"] = STATION_CODE_NEW_ORLEANS
+STATIONS["galveston"] = STATION_CODE_GALVESTON
 
 
 app = Flask(__name__)
@@ -142,12 +142,12 @@ def session_ended():
 @app.template_filter()
 def humanize_date(dt):
     # http://stackoverflow.com/a/20007730/1163855
-    ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n/10%10!=1)*(n%10<4)*n%10::4])
+    ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n/10 % 10 != 1)*(n % 10 < 4)*n % 10::4])
     month_and_day_of_week = dt.strftime('%A %B')
     day_of_month = ordinal(dt.day)
     year = dt.year if dt.year != datetime.datetime.now().year else ""
     formatted_date = "{} {} {}".format(month_and_day_of_week, day_of_month, year)
-    formatted_date = re.sub('\s+', ' ', formatted_date)
+    formatted_date = re.sub(r'\s+', ' ', formatted_date)
     return formatted_date
 
 
@@ -191,7 +191,7 @@ def humanize_height(height):
     if is_negative:
         feet *= -1
     formatted_height = "{} {} feet".format(feet, remainder_text)
-    formatted_height = re.sub('\s+', ' ', formatted_height)
+    formatted_height = re.sub(r'\s+', ' ', formatted_height)
     return formatted_height
 
 

@@ -2,7 +2,7 @@ import logging
 import os
 
 from flask import Flask
-from flask_ask import Ask, request, session, question, statement
+from flask_ask import Ask, question, statement
 
 
 app = Flask(__name__)

@@ -5,7 +5,7 @@ from six.moves.urllib.request import urlopen
 
 
 from flask import Flask
-from flask_ask import Ask, request, session, question, statement
+from flask_ask import Ask, session, question, statement
 
 
 app = Flask(__name__)
@@ -114,7 +114,7 @@ def _parse_json(text):
     try:
         slice_start = text.index("\\nEvents\\n") + SIZE_OF_EVENTS
         slice_end = text.index("\\n\\n\\nBirths")
-        text = text[slice_start:slice_end];
+        text = text[slice_start:slice_end]
     except ValueError:
         return events
     start_index = end_index = 0
@@ -130,7 +130,7 @@ def _parse_json(text):
         # replace dashes returned in text from Wikipedia's API
         event_text = event_text.replace('\\u2013', '')
         # add comma after year so Alexa pauses before continuing with the sentence
-        event_text = re.sub('^\d+', r'\g<0>,', event_text)
+        event_text = re.sub(r'^\d+', r'\g<0>,', event_text)
         events.append(event_text)
     events.reverse()
     return events

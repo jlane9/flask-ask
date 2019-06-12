@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import unittest
-from aniso8601.timezone import UTCOffset, build_utcoffset
+from aniso8601.timezone import build_utcoffset
 from flask_ask.core import Ask
 
 from datetime import datetime, timedelta
@@ -19,7 +19,6 @@ class FakeRequest(object):
 
 class TestCoreRoutines(unittest.TestCase):
     """ Tests for core Flask Ask functionality """
-
 
     def setUp(self):
         self.mock_app = MagicMock()
@@ -40,7 +39,6 @@ class TestCoreRoutines(unittest.TestCase):
     def test_alexa_request_parsing(self):
         ask = Ask()
         ask._alexa_request()
-
 
     def test_parse_timestamp(self):
         utc = build_utcoffset('UTC', timedelta(hours=0))

@@ -1,6 +1,5 @@
 import unittest
 import json
-import uuid
 
 from flask_ask import Ask, statement
 from flask import Flask
@@ -60,7 +59,8 @@ play_request = {
           "resolutions": {
             "resolutionsPerAuthority": [
               {
-                "authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.26338c44-65da-4d58-aa75-c86b21271eb7.child_info_type",
+                "authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.26338c44-65da-4d58-aa75-c86b21271eb7."
+                             "child_info_type",
                 "status": {
                   "code": "ER_SUCCESS_MATCH"
                 },

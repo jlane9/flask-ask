@@ -8,7 +8,7 @@ from functools import wraps, partial
 
 import aniso8601
 from werkzeug.contrib.cache import SimpleCache
-from werkzeug.local import LocalProxy, LocalStack
+from werkzeug.local import LocalProxy
 from jinja2 import BaseLoader, ChoiceLoader, TemplateNotFound
 from flask import current_app, json, request as flask_request, _app_ctx_stack
 
@@ -251,7 +251,7 @@ class Ask(object):
             convert {dict} -- Converts slot values to data types before assignment to parameters
                 default: {}
 
-            default {dict} --  Provides default values for Intent slots if Alexa reuqest
+            default {dict} --  Provides default values for Intent slots if Alexa request
                 returns no corresponding slot, or a slot with an empty value
                 default: {}
         """
@@ -289,6 +289,7 @@ class Ask(object):
         Arguments:
             f {function} -- display_element_selected view function
         """
+
         self._display_element_selected_func = f
 
         @wraps(f)
@@ -296,8 +297,7 @@ class Ask(object):
             self._flask_view_func(*args, **kw)
         return f
 
-
-    def on_purchase_completed(self, mapping={'payload': 'payload','name':'name','status':'status','token':'token'}, convert={}, default={}):
+    def on_purchase_completed(self, mapping={'payload': 'payload', 'name': 'name', 'status': 'status', 'token': 'token'}, convert={}, default={}):
         """Decorator routes an Connections.Response  to the wrapped function.
 
         Request is sent when Alexa completes the purchase flow. 
@@ -326,7 +326,6 @@ class Ask(object):
                 self._flask_view_func(*args, **kwargs)
             return f
         return decorator
-
 
     def on_playback_started(self, mapping={'offset': 'offsetInMilliseconds'}, convert={}, default={}):
         """Decorator routes an AudioPlayer.PlaybackStarted Request to the wrapped function.
@@ -564,7 +563,7 @@ class Ask(object):
 
     @property
     def current_stream(self):
-        #return getattr(_app_ctx_stack.top, '_ask_current_stream', models._Field())
+        # return getattr(_app_ctx_stack.top, '_ask_current_stream', models._Field())
         user = self._get_user()
         if user:
             stream = top_stream(self.stream_cache, user)
@@ -618,6 +617,7 @@ class Ask(object):
 
         # Convert an environment variable to a WSGI "bytes-as-unicode" string
         enc, esc = sys.getfilesystemencoding(), 'surrogateescape'
+
         def unicode_to_wsgi(u):
             return u.encode(enc, esc).decode('iso-8859-1')
 
@@ -655,6 +655,7 @@ class Ask(object):
         # the application is invoked. It is used to set HTTP status and
         # headers. Read the WSGI spec for details (PEP3333).
         headers = []
+
         def start_response(status, response_headers, _exc_info=None):
             headers[:] = [status, response_headers]
 
@@ -682,12 +683,10 @@ class Ask(object):
             if hasattr(result, 'close'):
                 result.close()
 
-
     def _get_user(self):
         if self.context:
             return self.context.get('System', {}).get('user', {}).get('userId')
         return None
-
 
     def _alexa_request(self, verify=True):
         raw_body = flask_request.data
@@ -739,14 +738,13 @@ class Ask(object):
 
         raise ValueError('Invalid timestamp value! Cannot parse from either ISO8601 string or UTC timestamp.')
 
-
     def _update_stream(self):
         fresh_stream = models._Field()
         fresh_stream.__dict__.update(self.current_stream.__dict__)  # keeps url attribute after stopping stream
         fresh_stream.__dict__.update(self._from_directive())
 
         context_info = self._from_context()
-        if context_info != None:
+        if context_info is not None:
             fresh_stream.__dict__.update(context_info)
 
         self.current_stream = fresh_stream
@@ -771,7 +769,7 @@ class Ask(object):
         self.request = request_body.request
         self.version = request_body.version
         self.context = getattr(request_body, 'context', models._Field())
-        self.session = getattr(request_body, 'session', self.session) # to keep old session.attributes through AudioRequests
+        self.session = getattr(request_body, 'session', self.session)  # to keep old session.attributes through AudioRequests
 
         if not self.session:
             self.session = models._Field()

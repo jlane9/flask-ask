@@ -1,6 +1,5 @@
 import unittest
 from mock import patch, MagicMock
-from flask import Flask
 from flask_ask import Ask, audio
 from flask_ask.models import _Field
 
@@ -57,7 +56,7 @@ class AskStreamHandlingTests(unittest.TestCase):
     def test_from_directive_call(self):
         ask = Ask()
         fake_stream = _Field()
-        fake_stream.__dict__.update({'token':'fake'})
+        fake_stream.__dict__.update({'token': 'fake'})
         with patch('flask_ask.core.top_stream', return_value=fake_stream):
             from_buffer = ask._from_directive()
             self.assertEqual(fake_stream, from_buffer)
