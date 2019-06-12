@@ -251,7 +251,7 @@ class Ask(object):
             convert {dict} -- Converts slot values to data types before assignment to parameters
                 default: {}
 
-            default {dict} --  Provides default values for Intent slots if Alexa reuqest
+            default {dict} --  Provides default values for Intent slots if Alexa request
                 returns no corresponding slot, or a slot with an empty value
                 default: {}
         """
