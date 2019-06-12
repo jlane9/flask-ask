@@ -114,7 +114,7 @@ def _parse_json(text):
     try:
         slice_start = text.index("\\nEvents\\n") + SIZE_OF_EVENTS
         slice_end = text.index("\\n\\n\\nBirths")
-        text = text[slice_start:slice_end];
+        text = text[slice_start:slice_end]
     except ValueError:
         return events
     start_index = end_index = 0

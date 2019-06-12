@@ -49,7 +49,7 @@ def to_time(amazon_time):
         return aniso8601.parse_time(amazon_time)
     except ValueError as e:
         logger.warn("ValueError for amazon_time '{}'.".format(amazon_time))
-        logger.warn("ValueError message: {}".format(e.message))
+        logger.warn("ValueError message: {}".format(str(e)))
         return None
 
 

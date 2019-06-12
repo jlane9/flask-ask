@@ -2,8 +2,9 @@ import requests
 from flask import json
 from flask_ask import logger
 
-class Product():
-    '''
+
+class Product:
+    """
     Object model for inSkillProducts and methods to access products.
     
     {"inSkillProducts":[
@@ -17,7 +18,7 @@ class Product():
     "nextToken":null,
     "truncated":false}
 
-    '''
+    """
 
     def __init__(self, apiAccessToken):
         self.token = apiAccessToken

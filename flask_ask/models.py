@@ -434,7 +434,7 @@ class audio(_Response):
                 default: {False}
         """
 
-        directive = {}
+        directive = dict()
         directive['type'] = 'AudioPlayer.ClearQueue'
         if stop:
             directive['clearBehavior'] = 'CLEAR_ALL'

@@ -744,7 +744,7 @@ class Ask(object):
         fresh_stream.__dict__.update(self._from_directive())
 
         context_info = self._from_context()
-        if context_info != None:
+        if context_info is not None:
             fresh_stream.__dict__.update(context_info)
 
         self.current_stream = fresh_stream

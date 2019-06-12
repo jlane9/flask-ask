@@ -7,8 +7,8 @@ from six.moves.urllib.request import urlopen
 from OpenSSL import crypto
 
 
-
-class VerificationError(Exception): pass
+class VerificationError(Exception):
+    pass
 
 
 def load_certificate(cert_url):
