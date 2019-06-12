@@ -147,7 +147,7 @@ def humanize_date(dt):
     day_of_month = ordinal(dt.day)
     year = dt.year if dt.year != datetime.datetime.now().year else ""
     formatted_date = "{} {} {}".format(month_and_day_of_week, day_of_month, year)
-    formatted_date = re.sub('\s+', ' ', formatted_date)
+    formatted_date = re.sub(r'\s+', ' ', formatted_date)
     return formatted_date
 
 
@@ -191,7 +191,7 @@ def humanize_height(height):
     if is_negative:
         feet *= -1
     formatted_height = "{} {} feet".format(feet, remainder_text)
-    formatted_height = re.sub('\s+', ' ', formatted_height)
+    formatted_height = re.sub(r'\s+', ' ', formatted_height)
     return formatted_height
 
 

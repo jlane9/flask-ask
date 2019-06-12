@@ -130,7 +130,7 @@ def _parse_json(text):
         # replace dashes returned in text from Wikipedia's API
         event_text = event_text.replace('\\u2013', '')
         # add comma after year so Alexa pauses before continuing with the sentence
-        event_text = re.sub('^\d+', r'\g<0>,', event_text)
+        event_text = re.sub(r'^\d+', r'\g<0>,', event_text)
         events.append(event_text)
     events.reverse()
     return events

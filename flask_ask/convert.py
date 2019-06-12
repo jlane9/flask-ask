@@ -8,15 +8,15 @@ from . import logger
 
 _DATE_PATTERNS = {
     # "today", "tomorrow", "november twenty-fifth": 2015-11-25
-    '^\d{4}-\d{2}-\d{2}$': '%Y-%m-%d',
+    r'^\d{4}-\d{2}-\d{2}$': '%Y-%m-%d',
     # "this week", "next week": 2015-W48
-    '^\d{4}-W\d{2}$': '%Y-W%U-%w',
+    r'^\d{4}-W\d{2}$': '%Y-W%U-%w',
     # "this weekend": 2015-W48-WE
-    '^\d{4}-W\d{2}-WE$': '%Y-W%U-WE-%w',
+    r'^\d{4}-W\d{2}-WE$': '%Y-W%U-WE-%w',
     # "this month": 2015-11
-    '^\d{4}-\d{2}$': '%Y-%m',
+    r'^\d{4}-\d{2}$': '%Y-%m',
     # "next year": 2016
-    '^\d{4}$': '%Y',
+    r'^\d{4}$': '%Y',
 }
 
 
